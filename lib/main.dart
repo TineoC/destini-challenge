@@ -18,6 +18,7 @@ class Destini extends StatelessWidget {
 class StoryPage extends StatefulWidget {
   const StoryPage({super.key});
 
+  @override
   _StoryPageState createState() => _StoryPageState();
 }
 
@@ -27,7 +28,11 @@ class _StoryPageState extends State<StoryPage> {
   @override
   Widget build(BuildContext context) {
     final List<String> choices = _storyBrain.getChoices();
-    var [firstChoice, secondChoice] = choices;
+
+    // ignore: unused_local_variable
+    var [firstChoice, secondChoice, ...rest] = choices;
+
+    const choiceStyles = TextStyle(fontSize: 20.0, color: Colors.white);
 
     return Scaffold(
       body: Container(
@@ -57,16 +62,13 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 child: TextButton(
                   onPressed: () {
-                    //Choice 1 made by user.
-                    setState(() {
-                      _storyBrain.nextStory(1);
-                    });
+                    showNextStory(0);
                   },
                   style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(Colors.red)),
                   child: Text(
                     firstChoice,
-                    style: const TextStyle(fontSize: 20.0, color: Colors.white),
+                    style: choiceStyles,
                   ),
                 ),
               ),
@@ -80,16 +82,13 @@ class _StoryPageState extends State<StoryPage> {
                   child: TextButton(
                     onPressed: () {
                       //Choice 2 made by user.
-                      setState(() {
-                        _storyBrain.nextStory(2);
-                      });
+                      showNextStory(1);
                     },
                     style: const ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll(Colors.blue)),
                     child: Text(
                       secondChoice,
-                      style:
-                          const TextStyle(fontSize: 20.0, color: Colors.white),
+                      style: choiceStyles,
                     ),
                   ),
                 ),
@@ -99,5 +98,16 @@ class _StoryPageState extends State<StoryPage> {
         ),
       ),
     );
+  }
+
+  void showNextStory(int index) {
+    setState(() {
+      if (_storyBrain.isEndNode()) {
+        _storyBrain.restart();
+        return;
+      }
+
+      _storyBrain.nextStory(index);
+    });
   }
 }
