@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 //TODO: Step 15 - Run the app and see if you can see the screen update with the first story. Delete this TODO if it looks as you expected.
 
-void main() => runApp(Destini());
+void main() => runApp(const Destini());
 
 class Destini extends StatelessWidget {
+  const Destini({super.key});
+
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
@@ -16,6 +18,8 @@ class Destini extends StatelessWidget {
 //TODO: Step 9 - Create a new storyBrain object from the StoryBrain class.
 
 class StoryPage extends StatefulWidget {
+  const StoryPage({super.key});
+
   _StoryPageState createState() => _StoryPageState();
 }
 
@@ -25,13 +29,16 @@ class _StoryPageState extends State<StoryPage> {
     return Scaffold(
       body: Container(
         //TODO: Step 1 - Add background.png to this Container as a background image.
-        padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
-        constraints: BoxConstraints.expand(),
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/background.png'), fit: BoxFit.cover)),
+        padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
+        constraints: const BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Expanded(
+              const Expanded(
                 flex: 12,
                 child: Center(
                   child: Text(
@@ -50,16 +57,16 @@ class _StoryPageState extends State<StoryPage> {
                     //Choice 1 made by user.
                     //TODO: Step 18 - Call the nextStory() method from storyBrain and pass the number 1 as the choice made by the user.
                   },
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(Colors.red)),
                   child: Text(
                     //TODO: Step 13 - Use the storyBrain to get the text for choice 1.
                     'Choice 1',
-                    style: TextStyle(fontSize: 20.0, color: Colors.white),
+                    style: const TextStyle(fontSize: 20.0, color: Colors.white),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               Expanded(
