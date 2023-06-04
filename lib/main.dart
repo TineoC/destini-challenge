@@ -7,10 +7,11 @@ void main() => runApp(const Destini());
 class Destini extends StatelessWidget {
   const Destini({super.key});
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: StoryPage(),
+      home: const StoryPage(),
     );
   }
 }
@@ -28,7 +29,6 @@ class _StoryPageState extends State<StoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        //TODO: Step 1 - Add background.png to this Container as a background image.
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('images/background.png'), fit: BoxFit.cover)),
