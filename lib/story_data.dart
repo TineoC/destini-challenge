@@ -2,6 +2,8 @@ import 'package:destiny/story.dart';
 
 class StoryData {
   static StoryNode getRootNode() {
+    const restartChoices = ['Restart', ''];
+
     StoryNode startNode = StoryNode(
       title:
           'Your car has blown a tire on a winding road in the middle of nowhere with no cell phone reception. You decide to hitchhike. A rusty pickup truck rumbles to a stop next to you. A man with a wide brimmed hat with soulless eyes opens the passenger door for you and asks: "Need a ride, boy?"',
@@ -34,37 +36,28 @@ class StoryData {
     StoryNode storyThree = StoryNode(
       title:
           'What? Such a cop-out! Did you know traffic accidents are the second leading cause of accidental death for most adult age groups?',
-      choices: ['Restart', ''],
+      choices: restartChoices,
       children: [],
     );
 
     StoryNode storyFour = StoryNode(
       title:
           'As you smash through the guardrail and careen towards the jagged rocks below you, you reflect on the dubious wisdom of stabbing someone while they are driving a car you are in.',
-      choices: ['Restart', ''],
+      choices: restartChoices,
       children: [],
     );
 
     StoryNode storyFive = StoryNode(
       title:
           'You bond with the murderer while crooning verses of "Can you feel the love tonight". He drops you off at the next town. Before you go, he asks you if you know any good places to dump bodies. You reply: "Try the pier".',
-      choices: ['Restart', ''],
-      children: [],
-    );
-
-    StoryNode endNode = StoryNode(
-      title: 'The End',
-      choices: [],
+      choices: restartChoices,
       children: [],
     );
 
     // Connect the nodes
-    startNode.children = [storyOne, storyTwo];
+    startNode.children = [storyTwo, storyOne];
     storyOne.children = [storyTwo, storyThree];
     storyTwo.children = [storyFive, storyFour];
-    storyThree.children = [endNode];
-    storyFour.children = [endNode];
-    storyFive.children = [endNode];
 
     return startNode;
   }

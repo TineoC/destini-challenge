@@ -25,15 +25,15 @@ class StoryBrain {
     _currentNode = children[choiceIndex];
   }
 
+  void restart() {
+    _currentNode = _rootNode;
+  }
+
   bool isEndNode() {
     return _currentNode.children.isEmpty;
   }
 
-  void _restart() {
-    _currentNode = _rootNode;
-  }
-
   bool buttonShouldBeVisible() {
-    return true;
+    return _currentNode.children.isNotEmpty;
   }
 }
