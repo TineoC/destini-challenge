@@ -1,6 +1,6 @@
 class Story {
-  late String storyTitle;
+  late String title;
   late List<String> choices;
 
-  Story(this.storyTitle, this.choices);
+  Story({required this.title, required this.choices});
 }
