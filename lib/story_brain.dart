@@ -13,7 +13,7 @@ class StoryBrain {
     return _currentNode.title;
   }
 
-  List<String> getChoices(Story story) {
+  List<String> getChoices() {
     return _currentNode.choices;
   }
 
