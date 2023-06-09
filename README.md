@@ -1,6 +1,8 @@
-# destiny
+# Destiny Flutter Challenge
 
-A new Flutter project.
+A flutter challenge for a story that have divergent paths.
+
+Different from the original code challenge, I implemented graphs for the structure of the story data.
 
 ## Getting Started
 
