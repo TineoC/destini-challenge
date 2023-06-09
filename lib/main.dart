@@ -29,8 +29,7 @@ class _StoryPageState extends State<StoryPage> {
   Widget build(BuildContext context) {
     final List<String> choices = _storyBrain.getChoices();
 
-    // ignore: unused_local_variable
-    var [firstChoice, secondChoice, ...rest] = choices;
+    var [firstChoice, secondChoice] = choices;
 
     const choiceStyles = TextStyle(fontSize: 20.0, color: Colors.white);
 
@@ -47,17 +46,7 @@ class _StoryPageState extends State<StoryPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Expanded(
-                flex: 12,
-                child: Center(
-                  child: Text(
-                    _storyBrain.getStory(),
-                    style: const TextStyle(
-                      fontSize: 20.0,
-                    ),
-                  ),
-                ),
-              ),
+              StoryWidget(storyBrain: _storyBrain),
               Expanded(
                 flex: 2,
                 child: TextButton(
@@ -109,5 +98,29 @@ class _StoryPageState extends State<StoryPage> {
 
       _storyBrain.nextStory(index);
     });
+  }
+}
+
+class StoryWidget extends StatelessWidget {
+  const StoryWidget({
+    super.key,
+    required StoryBrain storyBrain,
+  }) : _storyBrain = storyBrain;
+
+  final StoryBrain _storyBrain;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 12,
+      child: Center(
+        child: Text(
+          _storyBrain.getStory(),
+          style: const TextStyle(
+            fontSize: 20.0,
+          ),
+        ),
+      ),
+    );
   }
 }
